@@ -1,0 +1,77 @@
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="url"],
+input[type="number"],
+input[type="password"],
+input[type="date"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="color"],
+textarea {
+    display: block;
+    width: 100%;
+    border: $text-inputs-border;
+
+    &:focus {
+        border-color: $text-inputs-focus-border-color;
+    }
+
+    &[disabled] {
+        background: $text-inputs-disabled-background;
+    }
+}
+
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="url"],
+input[type="number"],
+input[type="password"],
+input[type="date"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="color"] {
+    height: $text-inputs-height;
+    padding: $text-inputs-padding;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+}
+
+input[type="search"] {
+    @include appearance(textfield);
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+input[type="color"] {
+    padding: 0;
+    @include appearance(none);
+}
+
+textarea {
+    overflow: auto;
+    min-height: $text-inputs-textarea-min-height;
+    padding: $text-inputs-textarea-padding;
+}
+
+//Placeholder
+@include placeholder-color($text-inputs-placeholder-color);
+
+//Data list
+datalist {
+    border: $text-inputs-datalist-border;
+}

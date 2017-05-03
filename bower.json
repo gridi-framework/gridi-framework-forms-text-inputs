@@ -1,0 +1,31 @@
+{
+    "name": "gridi-framework-forms-text-inputs",
+    "description": "",
+    "main": "",
+    "authors": [
+        "Przemysław Dziadek <przemyslaw.dziadek@gmail.com>"
+    ],
+    "license": "MIT",
+    "keywords": [
+        "css",
+        "scss",
+        "gridi",
+        "framework",
+        "forms",
+        "text",
+        "inputs"
+    ],
+    "homepage": "https://github.com/gridi-framework/gridi-framework-forms-text-inputs",
+    "ignore": [
+        "**/.*",
+        "**/*.md",
+        "**/*.js",
+        "**/*.json",
+        "node_modules",
+        "bower_components"
+    ],
+    "dependencies": {
+        "gridi-framework-core": "*",
+        "gridi-framework-forms-core": "*"
+    }
+}

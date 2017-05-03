@@ -1,0 +1,17 @@
+$text-inputs-border: 1px solid get-color(grey, 400) !default;
+$text-inputs-focus-border-color: $primary-color !default;
+
+$text-inputs-disabled-background: get-color(grey, 100) !default;
+
+//Text elements
+$text-inputs-height: 3em !default;
+$text-inputs-padding: 0 10px !default;
+
+$text-inputs-textarea-min-height: 100px !default;
+$text-inputs-textarea-padding: 8px 10px !default;
+
+//Placeholder
+$text-inputs-placeholder-color: get-color(grey, 400) !default;
+
+//Datalist
+$text-inputs-datalist-border: 1px solid $primary-color !default;

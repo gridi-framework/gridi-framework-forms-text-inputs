@@ -1,0 +1,61 @@
+@mixin include-text-inputs-colors($border-color: null , $focus-border-color: null, $background: null, $color: null) {
+    @if $border-color {
+        border-color: $border-color;
+    }
+
+    @if $background {
+        background: $background;
+    }
+
+    @if $color {
+        color: $color;
+    }
+
+    @if $focus-border-color {
+        &:focus {
+            border-color: $focus-border-color;
+        }
+    }
+}
+
+@mixin text-inputs-colors($border-color: null , $focus-border-color: null, $background: null, $color: null) {
+    @include text-inputs-style() {
+        @include include-text-inputs-colors($border-color, $focus-border-color, $background, $color);
+    }
+}
+
+@mixin class-text-inputs-colors($class, $border-color: null , $focus-border-color: null, $background: null, $color: null) {
+    @include class-text-inputs-style($class) {
+        @include include-text-inputs-colors($border-color, $focus-border-color, $background, $color);
+    }
+}
+
+//Disabled
+@mixin text-inputs-disabled-colors($border-color: null , $focus-border-color: null, $background: null, $color: null) {
+    @include text-inputs-disabled-style() {
+        @include include-text-inputs-colors($border-color, $focus-border-color, $background, $color);
+    }
+}
+
+@mixin class-text-inputs-disabled-colors($class, $border-color: null , $focus-border-color: null, $background: null, $color: null) {
+    @include class-text-inputs-disabled-style($class) {
+        @include include-text-inputs-colors($border-color, $focus-border-color, $background, $color);
+    }
+}
+
+//Datalist
+@mixin include-datalist-colors($border-color) {
+    border-color: $border-color;
+}
+
+@mixin datalist-colors($border-color) {
+    datalist {
+        @include include-datalist-colors($border-color);
+    }
+}
+
+@mixin class-datalist-colors($class, $border-color) {
+    datalist.#{$class} {
+        @include include-datalist-colors($border-color);
+    }
+}
