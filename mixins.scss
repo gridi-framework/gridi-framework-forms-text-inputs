@@ -1,3 +1,103 @@
+//Text inputs
+@mixin text-inputs-style($with-textarea: true) {
+    @if $with-textarea {
+        input[type="text"],
+        input[type="search"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="url"],
+        input[type="number"],
+        input[type="password"],
+        input[type="date"],
+        input[type="time"],
+        input[type="datetime"],
+        input[type="datetime-local"],
+        input[type="month"],
+        input[type="week"],
+        input[type="color"],
+        textarea {
+            @content;
+        }
+    } @else {
+        input[type="text"],
+        input[type="search"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="url"],
+        input[type="number"],
+        input[type="password"],
+        input[type="date"],
+        input[type="time"],
+        input[type="datetime"],
+        input[type="datetime-local"],
+        input[type="month"],
+        input[type="week"],
+        input[type="color"] {
+            @content;
+        }
+    }
+}
+
+@mixin class-text-inputs-style($class, $with-textarea: true) {
+    @include text-inputs-style($with-textarea) {
+        &.#{$class} {
+            @content;
+        }
+    }
+}
+
+//Disabled text inputs
+@mixin text-inputs-disabled-style($with-textarea: true) {
+    @include text-inputs-style($with-textarea) {
+        &[disabled] {
+            @content;
+        }
+    }
+}
+
+@mixin class-text-inputs-disabled-style($class, $with-textarea: true) {
+    @include class-text-inputs-style($class, $with-textarea) {
+        &[disabled] {
+            @content;
+        }
+    }
+}
+
+//Placeholder
+@mixin include-placeholder-color($color) {
+    &::-webkit-input-placeholder {
+        color: $color;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+        color: $color;
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+        color: $color;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+        color: $color;
+    }
+    &::placeholder {
+        color: $color;
+    }
+}
+
+@mixin placeholder-color($color) {
+    input, textarea {
+        @include include-placeholder-color($color);
+    }
+}
+
+@mixin class-placeholder-color($class, $color) {
+    input, textarea {
+        &.#{$class} {
+            @include include-placeholder-color($color);
+        }
+    }
+}
+
+//Text Inputs Colors
+
 @mixin include-text-inputs-colors($border-color: null , $focus-border-color: null, $background: null, $color: null) {
     @if $border-color {
         border-color: $border-color;

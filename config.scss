@@ -1,6 +1,26 @@
+$text-inputs-margin-top: 0 !default;
+$text-inputs-margin-bottom: 0 !default;
+$text-inputs-margin-left: 0 !default;
+$text-inputs-margin-right: 0 !default;
+//Defined margins for each screens.
+$text-inputs-margin-for-screens: () !default;
+/*$text-inputs-margin-for-screens: (
+    s1: (
+        top: 20px, //Not required. Define only the margins values you want to change. Example - s2: ( top: 20px ) - change only top margin for screens greater than s2
+        bottom: 20px,
+        left: 20px,
+        right: 20px,
+    ),
+    ...
+) !default;*/
 $text-inputs-border: 1px solid get-color(grey, 400) !default;
 $text-inputs-focus-border-color: $primary-color !default;
+$text-inputs-background: transparent !default;
+$text-inputs-focus-background: transparent !default;
+$text-inputs-border-radius: 0 !default;
+$text-inputs-transition: 'border-color #{$elements-transition-duration} #{$elements-transition-function}, background #{$elements-transition-duration} #{$elements-transition-function}, color #{$elements-transition-duration} #{$elements-transition-function}' !default;
 
+$text-inputs-disabled-border-color: get-color(grey, 400) !default;
 $text-inputs-disabled-background: get-color(grey, 100) !default;
 
 //Text elements

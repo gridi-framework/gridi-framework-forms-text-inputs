@@ -1,56 +1,46 @@
-input[type="text"],
-input[type="search"],
-input[type="email"],
-input[type="tel"],
-input[type="url"],
-input[type="number"],
-input[type="password"],
-input[type="date"],
-input[type="time"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="month"],
-input[type="week"],
-input[type="color"],
-textarea {
+@include text-inputs-style() {
     display: block;
     width: 100%;
+    @include include-element-margin($text-inputs-margin-top, $text-inputs-margin-bottom, $text-inputs-margin-left, $text-inputs-margin-right, $text-inputs-margin-for-screens);
     border: $text-inputs-border;
+    outline: 0;
+    background: $text-inputs-background;
+    padding: 0;
+    color: inherit;
+    font: inherit;
+    @include border-radius($text-inputs-border-radius);
+    @include box-shadow(none);
+    @include appearance(none);
+    @include transition($text-inputs-transition);
+
+    &::-moz-focus-inner {
+        margin: 0;
+        outline: 0;
+        border: 0;
+        padding: 0;
+    }
 
     &:focus {
         border-color: $text-inputs-focus-border-color;
+        background: $text-inputs-focus-background;
     }
 
     &[disabled] {
+        cursor: default;
+        border-color: $text-inputs-disabled-border-color;
         background: $text-inputs-disabled-background;
     }
 }
 
-input[type="text"],
-input[type="search"],
-input[type="email"],
-input[type="tel"],
-input[type="url"],
-input[type="number"],
-input[type="password"],
-input[type="date"],
-input[type="time"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="month"],
-input[type="week"],
-input[type="color"] {
+@include text-inputs-style(false) {
     height: $text-inputs-height;
     padding: $text-inputs-padding;
+    line-height: normal;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     height: auto;
-}
-
-input[type="search"] {
-    @include appearance(textfield);
 }
 
 input[type="search"]::-webkit-search-cancel-button,
@@ -61,7 +51,6 @@ input[type="search"]::-webkit-search-decoration {
 
 input[type="color"] {
     padding: 0;
-    @include appearance(none);
 }
 
 textarea {
