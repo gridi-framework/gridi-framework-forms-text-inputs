@@ -17,8 +17,8 @@ $text-inputs-border: 1px solid get-color(grey, 400) !default;
 $text-inputs-focus-border-color: $primary-color !default;
 $text-inputs-background: transparent !default;
 $text-inputs-focus-background: transparent !default;
-$text-inputs-color: inherit;
-$text-inputs-focus-color: inherit;
+$text-inputs-color: inherit !default;
+$text-inputs-focus-color: inherit !default;
 $text-inputs-border-radius: 0 !default;
 $text-inputs-transition: 'border-color #{$elements-transition-duration} #{$elements-transition-function}, background #{$elements-transition-duration} #{$elements-transition-function}, color #{$elements-transition-duration} #{$elements-transition-function}' !default;
 
