@@ -6,7 +6,7 @@
     outline: 0;
     background: $text-inputs-background;
     padding: 0;
-    color: inherit;
+    color: $text-inputs-color;
     font: inherit;
     @include border-radius($text-inputs-border-radius);
     @include box-shadow(none);
@@ -23,6 +23,7 @@
     &:focus {
         border-color: $text-inputs-focus-border-color;
         background: $text-inputs-focus-background;
+        color: $text-inputs-focus-color;
     }
 
     &[disabled] {
