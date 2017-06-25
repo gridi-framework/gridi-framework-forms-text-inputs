@@ -24,6 +24,7 @@ $text-inputs-transition: 'border-color #{$elements-transition-duration} #{$eleme
 
 $text-inputs-disabled-border-color: get-color(grey, 400) !default;
 $text-inputs-disabled-background: get-color(grey, 100) !default;
+$text-inputs-disabled-color: get-color(grey, 400) !default;
 
 //Text elements
 $text-inputs-height: 3em !default;
