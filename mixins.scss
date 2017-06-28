@@ -63,35 +63,81 @@
     }
 }
 
-//Placeholder
-@mixin include-placeholder-color($color) {
-    &::-webkit-input-placeholder {
-        color: $color;
+//Colors
+@mixin include-text-inputs-colors($colors-map) {
+    @if map-has-key($colors-map, border-color) and map-get($colors-map, border-color) {
+        border-color: map-get($colors-map, border-color);
     }
-    &::-moz-placeholder { /* Firefox 19+ */
-        color: $color;
+    @if map-has-key($colors-map, background) and map-get($colors-map, background) {
+        background: map-get($colors-map, background);
     }
-    &:-ms-input-placeholder { /* IE 10+ */
-        color: $color;
+    @if map-has-key($colors-map, color) and map-get($colors-map, color) {
+        color: map-get($colors-map, color);
     }
-    &:-moz-placeholder { /* Firefox 18- */
-        color: $color;
-    }
-    &::placeholder {
-        color: $color;
-    }
-}
 
-@mixin placeholder-color($color) {
-    input, textarea {
-        @include include-placeholder-color($color);
-    }
-}
-
-@mixin class-placeholder-color($class, $color) {
-    input, textarea {
-        &.#{$class} {
-            @include include-placeholder-color($color);
+    &:focus {
+        @if map-has-key($colors-map, focus-border-color) and map-get($colors-map, focus-border-color) {
+            border-color: map-get($colors-map, focus-border-color);
         }
+        @if map-has-key($colors-map, focus-background) and map-get($colors-map, focus-background) {
+            background: map-get($colors-map, focus-background);
+        }
+        @if map-has-key($colors-map, focus-color) and map-get($colors-map, focus-color) {
+            color: map-get($colors-map, focus-color);
+        }
+    }
+}
+
+//Placeholder
+@mixin include-placeholder-color($colors-map) {
+    @if map-has-key($colors-map, color) and map-get($colors-map, color) {
+        &::-webkit-input-placeholder {
+            color: map-get($colors-map, color);
+        }
+        &::-moz-placeholder { /* Firefox 19+ */
+            color: map-get($colors-map, color);
+        }
+        &:-ms-input-placeholder { /* IE 10+ */
+            color: map-get($colors-map, color);
+        }
+        &:-moz-placeholder { /* Firefox 18- */
+            color: map-get($colors-map, color);
+        }
+        &::placeholder {
+            color: map-get($colors-map, color);
+        }
+    }
+}
+
+@mixin placeholder-color($colors-map) {
+    @include text-inputs-style() {
+        @include include-placeholder-color($colors-map);
+    }
+}
+
+@mixin class-placeholder-color($class, $colors-map) {
+    @include text-inputs-style() {
+        &.#{$class} {
+            @include include-placeholder-color($colors-map);
+        }
+    }
+}
+
+//Datalist
+@mixin include-datalist-colors($colors-map) {
+    @if map-has-key($colors-map, border-color) and map-get($colors-map, border-color) {
+        border-color: map-get($colors-map, border-color);
+    }
+}
+
+@mixin datalist-colors($colors-map) {
+    datalist {
+        @include include-datalist-colors($colors-map);
+    }
+}
+
+@mixin class-datalist-colors($class, $colors-map) {
+    datalist.#{$class} {
+        @include include-datalist-colors($colors-map);
     }
 }

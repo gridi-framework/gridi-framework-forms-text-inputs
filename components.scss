@@ -62,7 +62,7 @@ textarea {
 }
 
 //Placeholder
-@include placeholder-color($text-inputs-placeholder-color);
+@include placeholder-color((color: $text-inputs-placeholder-color));
 
 //Data list
 datalist {
