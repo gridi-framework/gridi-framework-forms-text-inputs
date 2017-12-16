@@ -46,98 +46,110 @@
     }
 }
 
-//Disabled text inputs
-@mixin text-inputs-disabled-style($with-textarea: true) {
-    @include text-inputs-style($with-textarea) {
-        &[disabled] {
-            @content;
+//Palceholder
+@mixin placeholder-style() {
+    @if $text-inputs-placeholder-css3-use-prefixes {
+        @if index($text-inputs-placeholder-browsers-prefixes, webkit) {
+            &::-webkit-input-placeholder {
+                @content;
+            }
+        }
+        @if index($text-inputs-placeholder-browsers-prefixes, moz) {
+            &::-moz-placeholder { /* Firefox 19+ */
+                @content;
+            }
+        }
+        @if index($text-inputs-placeholder-browsers-prefixes, ms) {
+            &:-ms-input-placeholder { /* IE 10+ */
+                @content;
+            }
+        }
+        @if index($text-inputs-placeholder-browsers-prefixes, moz) {
+            &:-moz-placeholder { /* Firefox 18- */
+                @content;
+            }
         }
     }
-}
-
-@mixin class-text-inputs-disabled-style($class, $with-textarea: true) {
-    @include class-text-inputs-style($class, $with-textarea) {
-        &[disabled] {
-            @content;
-        }
+    &::placeholder {
+        @content;
     }
 }
 
 //Colors
-@mixin include-text-inputs-colors($colors-map) {
-    @if map-has-key($colors-map, border-color) and map-get($colors-map, border-color) {
-        border-color: map-get($colors-map, border-color);
-    }
-    @if map-has-key($colors-map, background) and map-get($colors-map, background) {
-        background: map-get($colors-map, background);
-    }
-    @if map-has-key($colors-map, color) and map-get($colors-map, color) {
-        color: map-get($colors-map, color);
-    }
+//Text inputs
+//@mixin text-inputs-extra-colors-propertys($colors-map) {} //Create this mixin before import module when you want add some special colors style for element
+//@mixin text-inputs-focus-extra-colors-propertys($colors-map) {} //Create this mixin before import module when you want add some special colors style for element
+//@mixin text-inputs-disabled-extra-colors-propertys($colors-map) {} //Create this mixin before import module when you want add some special colors style for element
+//@mixin text-inputs-placeholder-extra-colors-propertys($colors-map) {} //Create this mixin before import module when you want add some special colors style for element
 
-    &:focus {
-        @if map-has-key($colors-map, focus-border-color) and map-get($colors-map, focus-border-color) {
-            border-color: map-get($colors-map, focus-border-color);
+@mixin text-inputs-colors-propertys($colors-map) {
+    @if is-map($colors-map) {
+        @include property-from-map($colors-map, outline-color);
+        @include property-from-map($colors-map, border-color);
+        @include property-from-map($colors-map, background-color);
+        @include property-from-map($colors-map, color);
+        @if mixin-exists(text-inputs-extra-colors-propertys) {
+            @include text-inputs-extra-colors-propertys($colors-map);
         }
-        @if map-has-key($colors-map, focus-background) and map-get($colors-map, focus-background) {
-            background: map-get($colors-map, focus-background);
+
+        &:focus {
+            @include property-from-map($colors-map, outline-color, focus-outline-color);
+            @include property-from-map($colors-map, border-color, focus-border-color);
+            @include property-from-map($colors-map, background-color, focus-background-color);
+            @include property-from-map($colors-map, color, focus-color);
+            @if mixin-exists(text-inputs-focus-extra-colors-propertys) {
+                @include text-inputs-focus-extra-colors-propertys($colors-map);
+            }
         }
-        @if map-has-key($colors-map, focus-color) and map-get($colors-map, focus-color) {
-            color: map-get($colors-map, focus-color);
+
+        &[disabled] {
+            @include property-from-map($colors-map, border-color, disabled-border-color);
+            @include property-from-map($colors-map, background-color, disabled-background-color);
+            @include property-from-map($colors-map, color, disabled-color);
+            @if mixin-exists(text-inputs-disabled-extra-colors-propertys) {
+                @include text-inputs-disabled-extra-colors-propertys($colors-map);
+            }
+        }
+
+        @include placeholder-style() {
+            @include property-from-map($colors-map, color, placeholder-color);
+            @if mixin-exists(text-inputs-placeholder-extra-colors-propertys) {
+                @include text-inputs-placeholder-extra-colors-propertys($colors-map);
+            }
         }
     }
 }
 
-//Placeholder
-@mixin include-placeholder-color($colors-map) {
-    @if map-has-key($colors-map, color) and map-get($colors-map, color) {
-        &::-webkit-input-placeholder {
-            color: map-get($colors-map, color);
-        }
-        &::-moz-placeholder { /* Firefox 19+ */
-            color: map-get($colors-map, color);
-        }
-        &:-ms-input-placeholder { /* IE 10+ */
-            color: map-get($colors-map, color);
-        }
-        &:-moz-placeholder { /* Firefox 18- */
-            color: map-get($colors-map, color);
-        }
-        &::placeholder {
-            color: map-get($colors-map, color);
-        }
-    }
-}
-
-@mixin placeholder-color($colors-map) {
+@mixin text-inputs-colors($colors-map) {
     @include text-inputs-style() {
-        @include include-placeholder-color($colors-map);
+        @include text-inputs-colors-propertys($colors-map);
     }
 }
 
-@mixin class-placeholder-color($class, $colors-map) {
-    @include text-inputs-style() {
-        &.#{$class} {
-            @include include-placeholder-color($colors-map);
-        }
+@mixin class-text-inputs-colors($class, $colors-map) {
+    @include class-text-inputs-style($class) {
+        @include text-inputs-colors-propertys($colors-map);
     }
 }
 
 //Datalist
-@mixin include-datalist-colors($colors-map) {
-    @if map-has-key($colors-map, border-color) and map-get($colors-map, border-color) {
-        border-color: map-get($colors-map, border-color);
+//@mixin datalist-extra-colors-propertys($colors-map) {} //Create this mixin before import module when you want add some special colors style for element
+
+@mixin datalist-colors-propertys($colors-map) {
+    @include property-from-map($colors-map, border-color);
+    @if mixin-exists(datalist-extra-colors-propertys) {
+        @include datalist-extra-colors-propertys($colors-map);
     }
 }
 
 @mixin datalist-colors($colors-map) {
     datalist {
-        @include include-datalist-colors($colors-map);
+        @include datalist-colors-propertys($colors-map);
     }
 }
 
 @mixin class-datalist-colors($class, $colors-map) {
     datalist.#{$class} {
-        @include include-datalist-colors($colors-map);
+        @include datalist-colors-propertys($colors-map);
     }
 }

@@ -1,40 +1,131 @@
-$text-inputs-margin-top: 0 !default;
-$text-inputs-margin-bottom: 0 !default;
-$text-inputs-margin-left: 0 !default;
-$text-inputs-margin-right: 0 !default;
-//Defined margins for each screens.
-$text-inputs-margin-for-screens: () !default;
-/*$text-inputs-margin-for-screens: (
-    s1: (
-        top: 20px, //Not required. Define only the margins values you want to change. Example - s2: ( top: 20px ) - change only top margin for screens greater than s2
-        bottom: 20px,
-        left: 20px,
-        right: 20px,
-    ),
-    ...
-) !default;*/
-$text-inputs-border: 1px solid get-color(grey, 400) !default;
-$text-inputs-focus-border-color: $primary-color !default;
-$text-inputs-background: transparent !default;
-$text-inputs-focus-background: transparent !default;
-$text-inputs-color: inherit !default;
-$text-inputs-focus-color: inherit !default;
-$text-inputs-border-radius: 0 !default;
-$text-inputs-transition: 'border-color #{$elements-transition-duration} #{$elements-transition-function}, background #{$elements-transition-duration} #{$elements-transition-function}, color #{$elements-transition-duration} #{$elements-transition-function}' !default;
+$text-inputs-display: block !default;
+$text-inputs-width: 100% !default;
+$text-inputs-height: 3em !default;
 
+//Magins
+$text-inputs-margin-top: $form-item-elements-margin-top !default;
+$text-inputs-margin-bottom: $form-item-elements-margin-bottom !default;
+$text-inputs-margin-left: $form-item-elements-margin-left !default;
+$text-inputs-margin-right: $form-item-elements-margin-right !default;
+$text-inputs-margin-for-screens: $form-item-elements-margin-for-screens !default;
+
+//Outline
+$text-inputs-outline-width: 0 !default;
+$text-inputs-outline-style: null !default;
+$text-inputs-outline-color: null !default;
+
+//Borders
+$text-inputs-border-width: 1px !default;
+$text-inputs-border-style: solid !default;
+$text-inputs-border-color: get-color(grey, 400) !default;
+$text-inputs-borders: () !default;
+
+//Background
+$text-inputs-background-image: null !default;
+$text-inputs-background-position: null !default;
+$text-inputs-background-repeat: null !default;
+$text-inputs-background-color: transparent !default;
+$text-inputs-background-attachment: null !default;
+
+//Paddings
+$text-inputs-padding-top: 0 !default;
+$text-inputs-padding-bottom: 0 !default;
+$text-inputs-padding-left: 0.7rem !default;
+$text-inputs-padding-right: 0.7rem !default;
+
+//Color
+$text-inputs-color: inherit !default;
+
+//Border radius
+$text-inputs-border-radius: 0 !default;
+
+//Box shadow
+$text-inputs-box-shadow: none !default;
+
+//Appearance
+$text-inputs-appearance: none !default;
+
+//Transition
+$text-inputs-transition-property: (border-color, background, color) !default;
+$text-inputs-transition-duration: $elements-transition-duration !default;
+$text-inputs-transition-timing-function: $elements-transition-function !default;
+$text-inputs-transition-delay: null !default;
+
+//Extra style
+//@mixin text-inputs-extra-style() {} //Create this mixin before import module when you want add some special style for element
+
+//Textarea
+$text-inputs-textarea-overflow: auto !default;
+$text-inputs-textarea-min-height: 7em !default;
+$text-inputs-textarea-padding-top: 0.5rem !default;
+$text-inputs-textarea-padding-bottom: 0.5rem !default;
+$text-inputs-textarea-padding-left: $text-inputs-padding-left !default;
+$text-inputs-textarea-padding-right: $text-inputs-padding-right !default;
+//@mixin textarea-extra-style() {} //Create this mixin before import module when you want add some special style for element
+
+//Focus
+//Outline
+$text-inputs-focus-outline-width: null !default;
+$text-inputs-focus-outline-style: null !default;
+$text-inputs-focus-outline-color: null !default;
+
+//Borders
+$text-inputs-focus-border-width: null !default;
+$text-inputs-focus-border-style: null !default;
+$text-inputs-focus-border-color: $primary-color !default;
+$text-inputs-focus-border-make-shorthand: false !default;
+$text-inputs-focus-borders: () !default;
+
+//Background
+$text-inputs-focus-background-image: null !default;
+$text-inputs-focus-background-position: null !default;
+$text-inputs-focus-background-repeat: null !default;
+$text-inputs-focus-background-color: transparent !default;
+$text-inputs-focus-background-attachment: null !default;
+$text-inputs-focus-background-make-shorthand: false !default;
+
+//Color
+$text-inputs-focus-color: inherit !default;
+
+//Extra style
+//@mixin text-inputs-focus-extra-style() {} //Create this mixin before import module when you want add some special style for element
+
+//Disabled
+//Cursor
+$text-inputs-disabled-cursor: default !default;
+
+//Borders
+$text-inputs-disabled-border-width: null !default;
+$text-inputs-disabled-border-style: null !default;
 $text-inputs-disabled-border-color: get-color(grey, 400) !default;
-$text-inputs-disabled-background: get-color(grey, 100) !default;
+$text-inputs-disabled-border-make-shorthand: false !default;
+$text-inputs-disabled-borders: () !default;
+
+//Background
+$text-inputs-disabled-background-image: null !default;
+$text-inputs-disabled-background-position: null !default;
+$text-inputs-disabled-background-repeat: null !default;
+$text-inputs-disabled-background-color: get-color(grey, 100) !default;
+$text-inputs-disabled-background-attachment: null !default;
+$text-inputs-disabled-background-make-shorthand: false !default;
+
+//Color
 $text-inputs-disabled-color: get-color(grey, 400) !default;
 
-//Text elements
-$text-inputs-height: 3em !default;
-$text-inputs-padding: 0 10px !default;
-
-$text-inputs-textarea-min-height: 100px !default;
-$text-inputs-textarea-padding: 8px 10px !default;
+//Extra style
+//@mixin text-inputs-disabled-extra-style() {} //Create this mixin before import module when you want add some special style for element
 
 //Placeholder
+$text-inputs-placeholder-browsers-prefixes: webkit moz ms !default;
+$text-inputs-placeholder-css3-use-prefixes: $css3-use-prefixes !default;
 $text-inputs-placeholder-color: get-color(grey, 400) !default;
+//@mixin text-inputs-placeholder-extra-style() {} //Create this mixin before import module when you want add some special style for element
 
 //Datalist
-$text-inputs-datalist-border: 1px solid $primary-color !default;
+//Borders
+$text-inputs-datalist-border-width: 1px !default;
+$text-inputs-datalist-border-style: solid !default;
+$text-inputs-datalist-border-color: $primary-color !default;
+$text-inputs-datalist-border-make-shorthand: true !default;
+$text-inputs-datalist-borders: () !default;
+//@mixin text-inputs-datalist-extra-style() {} //Create this mixin before import module when you want add some special style for element

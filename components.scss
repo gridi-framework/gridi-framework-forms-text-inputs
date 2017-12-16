@@ -1,19 +1,53 @@
 @include text-inputs-style() {
-    display: block;
-    width: 100%;
-    @include include-element-margin($text-inputs-margin-top, $text-inputs-margin-bottom, $text-inputs-margin-left, $text-inputs-margin-right, $text-inputs-margin-for-screens);
-    border: $text-inputs-border;
-    outline: 0;
-    background: $text-inputs-background;
+    display: $text-inputs-display;
+    width: $text-inputs-width;
+    @include margin-shorthand-with-screens-support((
+        top: $text-inputs-margin-top,
+        bottom: $text-inputs-margin-bottom,
+        left: $text-inputs-margin-left,
+        right: $text-inputs-margin-right
+    ), $text-inputs-margin-for-screens);
+    @include outline-shorthand((
+        width: $text-inputs-outline-width,
+        style: $text-inputs-outline-style,
+        color: $text-inputs-outline-color,
+        make-shorthand: true
+    ));
+    @include border-shorthand(map-merge((
+        border: (
+            width: $text-inputs-border-width,
+            style: $text-inputs-border-style,
+            color: $text-inputs-border-color,
+            make-shorthand: true
+        )
+    ), $text-inputs-borders));
+    @include background-shorthand((
+        image: $text-inputs-background-image,
+        position: $text-inputs-background-position,
+        repeat: $text-inputs-background-repeat,
+        color: $text-inputs-background-color,
+        attachment: $text-inputs-background-attachment,
+        make-shorthand: true
+    ));
     padding: 0;
-    color: $text-inputs-color;
     font: inherit;
+    color: $text-inputs-color;
     @include border-radius($text-inputs-border-radius);
-    @include box-shadow(none);
-    @include appearance(none);
-    @include transition($text-inputs-transition);
+    @include box-shadow($text-inputs-box-shadow);
+    @include appearance($text-inputs-appearance);
+    @include transition-shorthand((
+        property: $text-inputs-transition-property,
+        duration: $text-inputs-transition-duration,
+        timing-function: $text-inputs-transition-timing-function,
+        delay: $text-inputs-transition-delay,
+        make-shorthand: true
+    ));
+    @if mixin-exists(text-inputs-extra-style) {
+        @include text-inputs-extra-style();
+    }
 
-    &::-moz-focus-inner {
+    &::-moz-focus-inner,
+    &::-moz-focus-outer {
         margin: 0;
         outline: 0;
         border: 0;
@@ -21,50 +55,107 @@
     }
 
     &:focus {
-        border-color: $text-inputs-focus-border-color;
-        background: $text-inputs-focus-background;
+        @include outline-shorthand((
+            width: $text-inputs-focus-outline-width,
+            style: $text-inputs-focus-outline-style,
+            color: $text-inputs-focus-outline-color,
+            make-shorthand: true
+        ));
+        @include border-shorthand(map-merge((
+            border: (
+                width: $text-inputs-focus-border-width,
+                style: $text-inputs-focus-border-style,
+                color: $text-inputs-focus-border-color,
+                make-shorthand: $text-inputs-focus-border-make-shorthand
+            )
+        ), $text-inputs-focus-borders));
+        @include background-shorthand((
+            image: $text-inputs-focus-background-image,
+            position: $text-inputs-focus-background-position,
+            repeat: $text-inputs-focus-background-repeat,
+            color: $text-inputs-focus-background-color,
+            attachment: $text-inputs-focus-background-attachment,
+            make-shorthand: $text-inputs-focus-background-make-shorthand
+        ));
         color: $text-inputs-focus-color;
+        @if mixin-exists(text-inputs-focus-extra-style) {
+            @include text-inputs-focus-extra-style();
+        }
     }
 
     &[disabled] {
-        cursor: default;
-        border-color: $text-inputs-disabled-border-color;
-        background: $text-inputs-disabled-background;
+        cursor: $text-inputs-disabled-cursor;
+        @include border-shorthand(map-merge((
+            border: (
+                width: $text-inputs-disabled-border-width,
+                style: $text-inputs-disabled-border-style,
+                color: $text-inputs-disabled-border-color,
+                make-shorthand: $text-inputs-disabled-border-make-shorthand
+            )
+        ), $text-inputs-disabled-borders));
+        @include background-shorthand((
+            image: $text-inputs-disabled-background-image,
+            position: $text-inputs-disabled-background-position,
+            repeat: $text-inputs-disabled-background-repeat,
+            color: $text-inputs-disabled-background-color,
+            attachment: $text-inputs-disabled-background-attachment,
+            make-shorthand: $text-inputs-disabled-background-make-shorthand
+        ));
         color: $text-inputs-disabled-color;
+        @if mixin-exists(text-inputs-disabled-extra-style) {
+            @include text-inputs-disabled-extra-style();
+        }
+    }
+
+    @include placeholder-style() {
+        color: $text-inputs-placeholder-color;
+        @if mixin-exists(text-inputs-placeholder-extra-style) {
+            @include text-inputs-placeholder-extra-style();
+        }
     }
 }
 
 @include text-inputs-style(false) {
     height: $text-inputs-height;
-    padding: $text-inputs-padding;
+    @include padding-shorthand((
+        top: $text-inputs-padding-top,
+        bottom: $text-inputs-padding-bottom,
+        left: $text-inputs-padding-left,
+        right: $text-inputs-padding-right
+    ));
     line-height: normal;
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    height: auto;
-}
-
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
-    -webkit-appearance: none;
-    appearance: none;
 }
 
 input[type="color"] {
     padding: 0;
 }
 
+//Textarea
 textarea {
-    overflow: auto;
+    overflow: $text-inputs-textarea-overflow;
     min-height: $text-inputs-textarea-min-height;
-    padding: $text-inputs-textarea-padding;
+    @include padding-shorthand((
+        top: $text-inputs-textarea-padding-top,
+        bottom: $text-inputs-textarea-padding-bottom,
+        left: $text-inputs-textarea-padding-left,
+        right: $text-inputs-textarea-padding-right
+    ));
+    @if mixin-exists(textarea-extra-style) {
+        @include textarea-extra-style();
+    }
 }
-
-//Placeholder
-@include placeholder-color((color: $text-inputs-placeholder-color));
 
 //Data list
 datalist {
-    border: $text-inputs-datalist-border;
+    @include border-shorthand(map-merge((
+        border: (
+            width: $text-inputs-datalist-border-width,
+            style: $text-inputs-datalist-border-style,
+            color: $text-inputs-datalist-border-color,
+            make-shorthand: $text-inputs-datalist-border-make-shorthand
+        )
+    ), $text-inputs-datalist-borders));
+    @if mixin-exists(text-inputs-datalist-extra-style) {
+        @include text-inputs-datalist-extra-style();
+    }
 }
