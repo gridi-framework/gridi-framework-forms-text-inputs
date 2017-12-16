@@ -55,17 +55,17 @@
             }
         }
         @if index($text-inputs-placeholder-browsers-prefixes, moz) {
-            &::-moz-placeholder { /* Firefox 19+ */
+            &::-moz-placeholder {
                 @content;
             }
         }
         @if index($text-inputs-placeholder-browsers-prefixes, ms) {
-            &:-ms-input-placeholder { /* IE 10+ */
+            &:-ms-input-placeholder {
                 @content;
             }
         }
         @if index($text-inputs-placeholder-browsers-prefixes, moz) {
-            &:-moz-placeholder { /* Firefox 18- */
+            &:-moz-placeholder {
                 @content;
             }
         }
